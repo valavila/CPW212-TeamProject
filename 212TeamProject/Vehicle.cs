@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _212TeamProject
 {
-    class Vehicle
+    public class Vehicle
     {
         /// <summary>
         /// Id of vehicle
