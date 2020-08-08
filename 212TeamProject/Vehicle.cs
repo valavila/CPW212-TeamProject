@@ -17,7 +17,7 @@ namespace _212TeamProject
         /// <summary>
         /// VIN of the car
         /// </summary>
-        public string VehicleIdNum { get; set; }
+        public string VehicleIdNumice { get; set; }
 
         /// <summary>
         /// Liecinse plate number
