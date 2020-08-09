@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityFrameworkCRUDApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,27 @@ namespace _212TeamProject
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var newCar = new Vehicle
+            {
+                VehicleIdNum = "1C4RJFCTXCC204076",
+                PlateNum = "576 ADV",
+                Make = "Nissan",
+                Model = "Sentra",
+                Year = 2011,
+                Color = "Black"
+            };
+            VehilceDb.Add(newCar);
+
+            newCar.Color = "Red";
+            VehilceDb.Update(newCar);
+
+            List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
+
+            VehilceDb.Delete(newCar);
         }
     }
 }
