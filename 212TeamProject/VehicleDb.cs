@@ -28,8 +28,14 @@ namespace EntityFrameworkCRUDApp
 
         public static void Delete(Vehicle v)
         {
+            using (VehicleContext context = new VehicleContext())
+            {
+                context.Database.Log = Console.WriteLine;
 
-            throw new NotImplementedException();
+                context.Entry(v).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+            
         }
 
         public static void Delete(int Id)
