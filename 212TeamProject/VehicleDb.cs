@@ -13,7 +13,7 @@ namespace EntityFrameworkCRUDApp
     {
         public static List<Vehicle> GetAllVehicles()
         {
-            using (var context = new VehicleContext())
+            using (var context = new VehicleModel())
             {
                 List<Vehicle> allVehicles =
                     (from car in context.Vehicles
@@ -27,19 +27,21 @@ namespace EntityFrameworkCRUDApp
         /// </summary>
         /// <param name="v">Vehicle to be added</param>
         /// <returns></returns>
-        
+
         public static Vehicle Add(Vehicle v)
         {
-            VehicleContext context = new VehicleContext();
+            using (var context = new VehicleModel()){ 
             context.Vehicles.Add(v);
             context.SaveChanges();
 
             return v;
         }
 
+        }
+
         public static Vehicle Update(Vehicle v)
         {
-            using (var context = new VehicleContext())
+            using (var context = new VehicleModel())
             {
                 context.Database.Log = Console.WriteLine;
                 context.Entry(v).State = EntityState.Modified;
@@ -51,7 +53,7 @@ namespace EntityFrameworkCRUDApp
 
         public static void Delete(Vehicle v)
         {
-            using (VehicleContext context = new VehicleContext())
+            using (var context = new VehicleModel())
             {
                 context.Database.Log = Console.WriteLine;
 
@@ -63,7 +65,7 @@ namespace EntityFrameworkCRUDApp
 
         public static void Delete(int Id)
         {
-            using(var context = new VehicleContext())
+            using(var context = new VehicleModel())
             {
                 Vehicle carToDelete =
                     (from car in context.Vehicles
