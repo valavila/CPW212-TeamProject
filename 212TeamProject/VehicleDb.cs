@@ -15,10 +15,19 @@ namespace EntityFrameworkCRUDApp
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Adds vehicle to database. Returns the vehicle
+        /// with the <see cref="Vehicle.VehicleId"/> populated
+        /// </summary>
+        /// <param name="v">Vehicle to be added</param>
+        /// <returns></returns>
         public static Vehicle Add(Vehicle v)
         {
-            throw new NotImplementedException();
+            VehicleContext context = new VehicleContext();
+            context.Vehicles.Add(v);
+            context.SaveChanges();
+
+            return v;
         }
 
         public static Vehicle Update(Vehicle v)
