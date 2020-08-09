@@ -75,6 +75,9 @@
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleContext.cs" />
     <Compile Include="VehicleDb.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008080029317_Initial.resx">
       <DependentUpon>202008080029317_Initial.cs</DependentUpon>
     </EmbeddedResource>
