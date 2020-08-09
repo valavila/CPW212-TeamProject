@@ -1,49 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace _212TeamProject
 {
-    public class Vehicle
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Vehicle
     {
-        /// <summary>
-        /// Id of vehicle
-        /// </summary>
         public int VehicleId { get; set; }
 
-        /// <summary>
-        /// VIN of the car
-        /// </summary>
+        [Required]
+        [StringLength(17)]
         public string VehicleIdNum { get; set; }
 
-        /// <summary>
-        /// Liecinse plate number
-        /// </summary>
+        [Required]
+        [StringLength(8)]
         public string PlateNum { get; set; }
 
-        /// <summary>
-        /// what company made the car BMW, Jeep, etc.
-        /// </summary>
+        [Required]
+        [StringLength(40)]
         public string Make { get; set; }
 
-        /// <summary>
-        /// What version of the car Compass, Mita, Model S
-        /// </summary>
+        [Required]
+        [StringLength(70)]
         public string Model { get; set; }
 
-        /// <summary>
-        /// Year the car is made
-        /// </summary>
         public int Year { get; set; }
 
-        /// <summary>
-        /// Color of the car
-        /// </summary>
+        [Required]
+        [StringLength(30)]
         public string Color { get; set; }
-
-
     }
 }
