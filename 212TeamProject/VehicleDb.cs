@@ -31,7 +31,7 @@ namespace EntityFrameworkCRUDApp
 
         public static Vehicle Add(Vehicle v)
         {
-            using (var context = new VehicleModel()){ 
+            using (VehicleModel context = new VehicleModel()){ 
                 context.Vehicles.Add(v);
                 context.SaveChanges();
 

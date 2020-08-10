@@ -17,22 +17,20 @@ namespace _212TeamProject
             InitializeComponent();
         }
 
-        public Vehicle UserInput { get; set; }
+        public Vehicle newVehicle { get; set; }
 
         private void AddCarBTN_Click(object sender, EventArgs e)
         {
             //Input is most likly valid
 
-            Vehicle newVehicle = new Vehicle();
+            newVehicle = new Vehicle();
 
-            newVehicle.VehicleIdNum = Convert.ToString(VINbox);
-            newVehicle.PlateNum = Convert.ToString(PlateBox);
-            newVehicle.Make = Convert.ToString(MakeBox);
-            newVehicle.Model = Convert.ToString(ModelBox);
-            newVehicle.Year = Convert.ToInt32(YearBox);
-            newVehicle.Color = Convert.ToString(ColorBox);
-
-            UserInput = newVehicle;
+            newVehicle.VehicleIdNum = Convert.ToString(VINbox.Text);
+            newVehicle.PlateNum = Convert.ToString(PlateBox.Text);
+            newVehicle.Make = Convert.ToString(MakeBox.Text);
+            newVehicle.Model = Convert.ToString(ModelBox.Text);
+            newVehicle.Year = Convert.ToInt32(YearBox.Text);
+            newVehicle.Color = Convert.ToString(ColorBox.Text);
 
             MessageBox.Show($"Thank you for inputting {newVehicle.VehicleInfo}");
             Close();

@@ -94,9 +94,7 @@ namespace _212TeamProject
         {
             AddCar addCarForm = new AddCar();
 
-            Vehicle addCar = addCarForm.UserInput;
-
-            VehilceDb.Add(addCar);
+            Vehicle newVehicleAdd = addCarForm.newVehicle;
         }
     }
 }
