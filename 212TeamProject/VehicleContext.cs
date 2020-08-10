@@ -23,28 +23,4 @@
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
     }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Vehicle>()
-            .Property(e => e.VehicleIdNum)
-            .IsFixedLength()
-            .IsUnicode(false);
-
-        modelBuilder.Entity<Vehicle>()
-            .Property(e => e.PlateNum)
-            .IsUnicode(false);
-
-        modelBuilder.Entity<Vehicle>()
-            .Property(e => e.Make)
-            .IsUnicode(false);
-
-        modelBuilder.Entity<Vehicle>()
-            .Property(e => e.Model)
-            .IsUnicode(false);
-
-        modelBuilder.Entity<Vehicle>()
-            .Property(e => e.Color)
-            .IsUnicode(false);
-    }
 }
