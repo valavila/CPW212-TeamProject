@@ -46,7 +46,6 @@ namespace _212TeamProject
 
         private void CarListCbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChosenCarsLBox.Items.Clear();
 
             VehicleModel db = new VehicleModel();
 
@@ -59,12 +58,11 @@ namespace _212TeamProject
         private void Form1_Load(object sender, EventArgs e)
         {
             List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
-            PopulateVehiclesLisrBox(allVehicles);
 
-            PopulateComboBox(allVehicles);
+            CarListCbox.DataSource = allVehicles;
+            CarListCbox.DisplayMember = nameof(Vehicle.VehicleName);
 
             // gets car info
-            ChosenCarsLBox.Items.Clear();
 
             VehicleModel db = new VehicleModel();
 
@@ -74,20 +72,10 @@ namespace _212TeamProject
             PopulateVehiclesLisrBox(vehicles);
         }
 
-        private void PopulateComboBox(List<Vehicle> vehicle)
-        {
-            // Find a way to only have one of each car make and model
-
-            CarListCbox.Items.Clear();
-
-            foreach(Vehicle v in vehicle)
-            {
-                CarListCbox.Items.Add(v.VehicleName);
-            }
-        }
-
         private void PopulateVehiclesLisrBox(List<Vehicle> vehicles)
         {
+            ChosenCarsLBox.Items.Clear();
+
             foreach (Vehicle v in vehicles)
             {
                 if (CarListCbox.Text == v.VehicleName)
@@ -104,8 +92,6 @@ namespace _212TeamProject
 
             List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
             PopulateVehiclesLisrBox(allVehicles);
-
-            PopulateComboBox(allVehicles);
         }
     }
 }
