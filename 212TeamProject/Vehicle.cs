@@ -8,6 +8,7 @@ namespace _212TeamProject
 
     public partial class Vehicle
     {
+
         public int VehicleId { get; set; }
 
         [Required]
@@ -25,6 +26,14 @@ namespace _212TeamProject
         [Required]
         [StringLength(70)]
         public string Model { get; set; }
+
+        public string VehicleName
+        {
+            get
+            {
+                return $"{Make} {Model}"; ;
+            }
+        }
 
         public int Year { get; set; }
 
