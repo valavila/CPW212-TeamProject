@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkCRUDApp
 {
-    static class VehilceDb
+    public static class VehilceDb
     {
         public static List<Vehicle> GetAllVehicles()
         {
@@ -29,15 +30,29 @@ namespace EntityFrameworkCRUDApp
         /// <param name="v">Vehicle to be added</param>
         /// <returns></returns>
 
-        public static Vehicle Add(Vehicle v)
+        public static void Add(Vehicle v)
         {
-            using (var context = new VehicleModel()){ 
-            context.Vehicles.Add(v);
-            context.SaveChanges();
+            SqlConnection con = dbHelper.GetConnection();
 
-            return v;
-        }
+            SqlCommand insertCmd = new SqlCommand();
+            insertCmd.Connection = con;
+            insertCmd.CommandText = "INSERT INTO Vehicles(VehicleIdNum, PlateNum, Make, Model, Year, Color)" +
+                "VALUES(@VehIDNum, @PlateNum, @Make, @Model, @Year, @Color)";
+            insertCmd.Parameters.AddWithValue("@VehIDNum", v.VehicleIdNum);
+            insertCmd.Parameters.AddWithValue("@PlateNum", v.PlateNum);
+            insertCmd.Parameters.AddWithValue("@Make", v.Make);
+            insertCmd.Parameters.AddWithValue("@Model", v.Model);
+            insertCmd.Parameters.AddWithValue("@Year", v.Year);
+            insertCmd.Parameters.AddWithValue("@Color", v.Color);
 
+            // open connection
+            con.Open();
+
+            // Execute command
+            insertCmd.ExecuteNonQuery();
+
+            // Colse connection 
+            con.Close();
         }
 
         public static Vehicle Update(Vehicle v)

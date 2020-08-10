@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ChosenCarsLBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.AddBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CarListCbox
@@ -73,11 +74,22 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Chosen Cars Specifications:";
             // 
+            // AddBTN
+            // 
+            this.AddBTN.Location = new System.Drawing.Point(318, 60);
+            this.AddBTN.Name = "AddBTN";
+            this.AddBTN.Size = new System.Drawing.Size(84, 23);
+            this.AddBTN.TabIndex = 6;
+            this.AddBTN.Text = "Add Car";
+            this.AddBTN.UseVisualStyleBackColor = true;
+            this.AddBTN.Click += new System.EventHandler(this.AddBTN_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 292);
+            this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ChosenCarsLBox);
             this.Controls.Add(this.label1);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox ChosenCarsLBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button AddBTN;
     }
 }
 
