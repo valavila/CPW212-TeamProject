@@ -48,11 +48,5 @@ namespace _212TeamProject
         [Required]
         [StringLength(30)]
         public string Color { get; set; }
-
-        public string VehicleName()
-        {
-            return Make + " " + Model;
-            
-        }
     }
 }
