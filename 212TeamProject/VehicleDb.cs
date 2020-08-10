@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkCRUDApp
 {
-    static class VehilceDb
+    public static class VehilceDb
     {
         public static List<Vehicle> GetAllVehicles()
         {
@@ -32,11 +32,11 @@ namespace EntityFrameworkCRUDApp
         public static Vehicle Add(Vehicle v)
         {
             using (var context = new VehicleModel()){ 
-            context.Vehicles.Add(v);
-            context.SaveChanges();
+                context.Vehicles.Add(v);
+                context.SaveChanges();
 
-            return v;
-        }
+                return v;
+            }
 
         }
 

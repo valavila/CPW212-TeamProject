@@ -89,5 +89,14 @@ namespace _212TeamProject
                 }
             }
         }
+
+        private void AddBTN_Click(object sender, EventArgs e)
+        {
+            AddCar addCarForm = new AddCar();
+
+            Vehicle addCar = addCarForm.UserInput;
+
+            VehilceDb.Add(addCar);
+        }
     }
 }
