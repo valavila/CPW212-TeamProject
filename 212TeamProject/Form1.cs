@@ -53,24 +53,15 @@ namespace _212TeamProject
             List<Vehicle> vehicles =
                 (from v in db.Vehicles
                  select v).ToList();
-
-            foreach (Vehicle v in vehicles)
-            {
-                if (CarListCbox.Text == v.VehicleName)
-                {
-                    ChosenCarsLBox.Items.Add(v.VehicleInfo);
-                }
-            }
+            PopulateVehiclesLisrBox(vehicles);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
-            CarListCbox.DataSource = allVehicles;
-            CarListCbox.DisplayMember = nameof(Vehicle.VehicleName);
+            PopulateVehiclesLisrBox(allVehicles);
 
-            // Find a way to only have one of each car make and model
-
+            PopulateComboBox(allVehicles);
 
             // gets car info
             ChosenCarsLBox.Items.Clear();
@@ -80,7 +71,23 @@ namespace _212TeamProject
             List<Vehicle> vehicles =
                 (from v in db.Vehicles
                  select v).ToList();
+            PopulateVehiclesLisrBox(vehicles);
+        }
 
+        private void PopulateComboBox(List<Vehicle> vehicle)
+        {
+            // Find a way to only have one of each car make and model
+
+            CarListCbox.Items.Clear();
+
+            foreach(Vehicle v in vehicle)
+            {
+                CarListCbox.Items.Add(v.VehicleName);
+            }
+        }
+
+        private void PopulateVehiclesLisrBox(List<Vehicle> vehicles)
+        {
             foreach (Vehicle v in vehicles)
             {
                 if (CarListCbox.Text == v.VehicleName)
@@ -93,8 +100,12 @@ namespace _212TeamProject
         private void AddBTN_Click(object sender, EventArgs e)
         {
             AddCar addCarForm = new AddCar();
+            addCarForm.ShowDialog();
 
-            Vehicle newVehicleAdd = addCarForm.newVehicle;
+            List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
+            PopulateVehiclesLisrBox(allVehicles);
+
+            PopulateComboBox(allVehicles);
         }
     }
 }

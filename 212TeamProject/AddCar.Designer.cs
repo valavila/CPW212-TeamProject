@@ -169,6 +169,7 @@
             this.Controls.Add(this.VINbox);
             this.Name = "AddCar";
             this.Text = "AddCar";
+            this.Load += new System.EventHandler(this.AddCar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
