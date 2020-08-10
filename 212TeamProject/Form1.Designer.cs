@@ -51,8 +51,9 @@
             this.CarListCbox.FormattingEnabled = true;
             this.CarListCbox.Location = new System.Drawing.Point(179, 92);
             this.CarListCbox.Name = "CarListCbox";
-            this.CarListCbox.Size = new System.Drawing.Size(121, 28);
+            this.CarListCbox.Size = new System.Drawing.Size(261, 28);
             this.CarListCbox.TabIndex = 1;
+            this.CarListCbox.SelectedIndexChanged += new System.EventHandler(this.CarListCbox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -103,6 +104,7 @@
             this.Controls.Add(this.EnterBtn);
             this.Name = "Form1";
             this.Text = "Car Picker";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,6 +18,7 @@ namespace EntityFrameworkCRUDApp
                 List<Vehicle> allVehicles =
                     (from car in context.Vehicles
                      select car).ToList();
+
                 return allVehicles;
             }
         }

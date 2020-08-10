@@ -20,23 +20,41 @@ namespace _212TeamProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var newCar = new Vehicle
-            {
-                VehicleIdNum = "1C4RJFCTXCC204076",
-                PlateNum = "576 ADV",
-                Make = "Nissan",
-                Model = "Sentra",
-                Year = 2011,
-                Color = "Black"
-            };
-            VehilceDb.Add(newCar);
+            //TEST DATA
 
-            newCar.Color = "Red";
-            VehilceDb.Update(newCar);
+            //var newCar = new Vehicle
+            //{
+            //    VehicleIdNum = "1C4RJFCTXCC204076",
+            //    PlateNum = "576 ADV",
+            //    Make = "Nissan",
+            //    Model = "Sentra",
+            //    Year = 2011,
+            //    Color = "Black"
+            //};
+            //VehilceDb.Add(newCar);
 
+            //newCar.Color = "Red";
+            //VehilceDb.Update(newCar);
+
+            //List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
+
+            //VehilceDb.Delete(newCar);
+        }
+
+        private void CarListCbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
-
-            VehilceDb.Delete(newCar);
+            foreach (Vehicle v in vehicles)
+            {
+                CarListCbox.Items.Add(v);
+            }
+            CarListCbox.DataSource = vehicles;
+            CarListCbox.DisplayMember = nameof(Vehicle.Make);
         }
     }
 }
