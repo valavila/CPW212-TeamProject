@@ -35,6 +35,14 @@ namespace _212TeamProject
             }
         }
 
+        public string VehicleInfo
+        {
+            get
+            {
+                return $"{VehicleIdNum}: {PlateNum} {Make} {Model} {Year} {Color}"; ;
+            }
+        }
+
         public int Year { get; set; }
 
         [Required]
