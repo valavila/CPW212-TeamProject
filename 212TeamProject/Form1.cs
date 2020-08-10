@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,22 +40,54 @@ namespace _212TeamProject
             //List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
 
             //VehilceDb.Delete(newCar);
+
+
         }
 
         private void CarListCbox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ChosenCarsLBox.Items.Clear();
 
+            VehicleModel db = new VehicleModel();
+
+            List<Vehicle> vehicles =
+                (from v in db.Vehicles
+                 select v).ToList();
+
+            foreach (Vehicle v in vehicles)
+            {
+                if (CarListCbox.Text == v.VehicleName)
+                {
+                    ChosenCarsLBox.Items.Add(v.VehicleInfo);
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
+            List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
+            CarListCbox.DataSource = allVehicles;
+            CarListCbox.DisplayMember = nameof(Vehicle.VehicleName);
+
+            // Find a way to only have one of each car make and model
+
+
+            // gets car info
+            ChosenCarsLBox.Items.Clear();
+
+            VehicleModel db = new VehicleModel();
+
+            List<Vehicle> vehicles =
+                (from v in db.Vehicles
+                 select v).ToList();
+
             foreach (Vehicle v in vehicles)
             {
-                CarListCbox.Items.Add(v);
+                if (CarListCbox.Text == v.VehicleName)
+                {
+                    ChosenCarsLBox.Items.Add(v.VehicleInfo);
+                }
             }
-            CarListCbox.DataSource = vehicles;
-            CarListCbox.DisplayMember = nameof(Vehicle.Make);
         }
     }
 }
