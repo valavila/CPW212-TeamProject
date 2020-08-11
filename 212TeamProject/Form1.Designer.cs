@@ -38,47 +38,45 @@
             // CarListCbox
             // 
             this.CarListCbox.FormattingEnabled = true;
-            this.CarListCbox.Location = new System.Drawing.Point(119, 60);
-            this.CarListCbox.Margin = new System.Windows.Forms.Padding(2);
+            this.CarListCbox.Location = new System.Drawing.Point(178, 92);
             this.CarListCbox.Name = "CarListCbox";
-            this.CarListCbox.Size = new System.Drawing.Size(175, 21);
+            this.CarListCbox.Size = new System.Drawing.Size(260, 28);
             this.CarListCbox.TabIndex = 1;
             this.CarListCbox.SelectedIndexChanged += new System.EventHandler(this.CarListCbox_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 60);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(44, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Choose Car: ";
             // 
             // ChosenCarsLBox
             // 
             this.ChosenCarsLBox.FormattingEnabled = true;
-            this.ChosenCarsLBox.Location = new System.Drawing.Point(32, 134);
-            this.ChosenCarsLBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ChosenCarsLBox.ItemHeight = 20;
+            this.ChosenCarsLBox.Location = new System.Drawing.Point(48, 206);
             this.ChosenCarsLBox.Name = "ChosenCarsLBox";
-            this.ChosenCarsLBox.Size = new System.Drawing.Size(262, 69);
+            this.ChosenCarsLBox.Size = new System.Drawing.Size(555, 104);
             this.ChosenCarsLBox.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 119);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(44, 183);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 13);
+            this.label2.Size = new System.Drawing.Size(208, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Chosen Cars Specifications:";
             // 
             // AddBTN
             // 
-            this.AddBTN.Location = new System.Drawing.Point(318, 60);
+            this.AddBTN.Location = new System.Drawing.Point(477, 92);
+            this.AddBTN.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddBTN.Name = "AddBTN";
-            this.AddBTN.Size = new System.Drawing.Size(84, 23);
+            this.AddBTN.Size = new System.Drawing.Size(126, 35);
             this.AddBTN.TabIndex = 6;
             this.AddBTN.Text = "Add Car";
             this.AddBTN.UseVisualStyleBackColor = true;
@@ -86,15 +84,14 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(800, 449);
             this.Controls.Add(this.AddBTN);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ChosenCarsLBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CarListCbox);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Car Picker";
             this.Load += new System.EventHandler(this.Form1_Load);

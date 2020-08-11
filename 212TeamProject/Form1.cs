@@ -1,13 +1,8 @@
 ﻿using EntityFrameworkCRUDApp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _212TeamProject
@@ -18,64 +13,25 @@ namespace _212TeamProject
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //TEST DATA
-
-            //var newCar = new Vehicle
-            //{
-            //    VehicleIdNum = "1C4RJFCTXCC204076",
-            //    PlateNum = "576 ADV",
-            //    Make = "Nissan",
-            //    Model = "Sentra",
-            //    Year = 2011,
-            //    Color = "Black"
-            //};
-            //VehilceDb.Add(newCar);
-
-            //newCar.Color = "Red";
-            //VehilceDb.Update(newCar);
-
-            //List<Vehicle> vehicles = VehilceDb.GetAllVehicles();
-
-            //VehilceDb.Delete(newCar);
-
-
-        }
-
-        private void CarListCbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            VehicleModel db = new VehicleModel();
-
-            List<Vehicle> vehicles =
-                (from v in db.Vehicles
-                 select v).ToList();
-            PopulateVehiclesLisrBox(vehicles);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
+            PopulateVehiclesLisrBox();
+        }
 
-            CarListCbox.DataSource = allVehicles;
-            CarListCbox.DisplayMember = nameof(Vehicle.VehicleName);
-
-            // gets car info
-
+        /// <summary>
+        /// Shows Vehicle specifications when a car is selected 
+        /// from the drop down list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CarListCbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChosenCarsLBox.Items.Clear();
             VehicleModel db = new VehicleModel();
 
             List<Vehicle> vehicles =
                 (from v in db.Vehicles
                  select v).ToList();
-            PopulateVehiclesLisrBox(vehicles);
-        }
-
-        private void PopulateVehiclesLisrBox(List<Vehicle> vehicles)
-        {
-            ChosenCarsLBox.Items.Clear();
-
             foreach (Vehicle v in vehicles)
             {
                 if (CarListCbox.Text == v.VehicleName)
@@ -85,13 +41,30 @@ namespace _212TeamProject
             }
         }
 
+        /// <summary>
+        /// Populates drop down list of Vehicles to choose from
+        /// </summary>
+        private void PopulateVehiclesLisrBox()
+        {
+            List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
+
+            CarListCbox.DataSource = allVehicles;
+            CarListCbox.DisplayMember = nameof(Vehicle.VehicleName);
+
+        }
+
+        /// <summary>
+        /// Opens Add car form then adds new car car to the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddBTN_Click(object sender, EventArgs e)
         {
             AddCar addCarForm = new AddCar();
             addCarForm.ShowDialog();
 
             List<Vehicle> allVehicles = VehilceDb.GetAllVehicles();
-            PopulateVehiclesLisrBox(allVehicles);
+            PopulateVehiclesLisrBox();
         }
     }
 }

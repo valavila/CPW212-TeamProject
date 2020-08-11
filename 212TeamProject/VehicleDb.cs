@@ -32,27 +32,34 @@ namespace EntityFrameworkCRUDApp
 
         public static void Add(Vehicle v)
         {
-            SqlConnection con = dbHelper.GetConnection();
+            //SqlConnection con = dbHelper.GetConnection();
 
-            SqlCommand insertCmd = new SqlCommand();
-            insertCmd.Connection = con;
-            insertCmd.CommandText = "INSERT INTO Vehicles(VehicleIdNum, PlateNum, Make, Model, Year, Color)" +
-                "VALUES(@VehIDNum, @PlateNum, @Make, @Model, @Year, @Color)";
-            insertCmd.Parameters.AddWithValue("@VehIDNum", v.VehicleIdNum);
-            insertCmd.Parameters.AddWithValue("@PlateNum", v.PlateNum);
-            insertCmd.Parameters.AddWithValue("@Make", v.Make);
-            insertCmd.Parameters.AddWithValue("@Model", v.Model);
-            insertCmd.Parameters.AddWithValue("@Year", v.Year);
-            insertCmd.Parameters.AddWithValue("@Color", v.Color);
+            //SqlCommand insertCmd = new SqlCommand();
+            //insertCmd.Connection = con;
+            //insertCmd.CommandText = "INSERT INTO Vehicles(VehicleIdNum, PlateNum, Make, Model, Year, Color)" +
+            //    "VALUES(@VehIDNum, @PlateNum, @Make, @Model, @Year, @Color)";
+            //insertCmd.Parameters.AddWithValue("@VehIDNum", v.VehicleIdNum);
+            //insertCmd.Parameters.AddWithValue("@PlateNum", v.PlateNum);
+            //insertCmd.Parameters.AddWithValue("@Make", v.Make);
+            //insertCmd.Parameters.AddWithValue("@Model", v.Model);
+            //insertCmd.Parameters.AddWithValue("@Year", v.Year);
+            //insertCmd.Parameters.AddWithValue("@Color", v.Color);
 
-            // open connection
-            con.Open();
+            //// open connection
+            //con.Open();
 
-            // Execute command
-            insertCmd.ExecuteNonQuery();
+            //// Execute command
+            //insertCmd.ExecuteNonQuery();
 
-            // Colse connection 
-            con.Close();
+            //// Colse connection 
+            //con.Close();
+
+            // Everything done above can just be done like this below with less errors
+            using (var context = new VehicleModel())
+            {
+                context.Vehicles.Add(v); // prepares insert query
+                context.SaveChanges(); //Executes all pending insert update and delete 
+            }
         }
 
         public static Vehicle Update(Vehicle v)
